@@ -1,14 +1,19 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
-
-import InputBalance from "./components/InputBalance";
+import React, { useState } from "react";
+import { StyleSheet, View } from "react-native";
+import InputBalance from "./components/PresentetionalComponents/InputBalance";
+import ViewBalance from "./components/PresentetionalComponents/ViewBalance";
 
 //Pagina iniziale funzione
 export default function App() {
+  const [currentBalance, setCurrentBalance] = useState("");
+  const handleBalanceSubmit = (balance) => {
+    setCurrentBalance(balance);
+  };
+
   return (
     <View style={styles.container}>
-      <Text>FIORINO</Text>
-      <StatusBar style="auto" />
+      <InputBalance onBalanceSubmit={handleBalanceSubmit} />
+      <ViewBalance balance={currentBalance} />
     </View>
   );
 }
